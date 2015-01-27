@@ -28,6 +28,7 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'sqlite3'
+  gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
 
 group :test do
@@ -35,7 +36,6 @@ group :test do
   gem 'capybara', '2.4.4'
   gem 'factory_girl_rails', '4.5.0'
   gem 'cucumber-rails', '1.4.2', :require => false
-  gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
 
 group :production do
