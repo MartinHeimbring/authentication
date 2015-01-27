@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'faker', '~> 1.4.3'
 gem 'haml', '~> 4.0.6'
+gem 'haml-rails'
 gem 'html2haml'
 
 # Use Unicorn as the app server
