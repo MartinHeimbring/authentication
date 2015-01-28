@@ -12,6 +12,10 @@ describe 'Static pages' do
       expect(response.body).to include('Rails Authentication')
     end
 
+    it 'should have a dynamically generated title' do
+      expect(response.body).to include("Rails Authentication | Home")
+    end
+
   end
 
 
@@ -21,6 +25,10 @@ describe 'Static pages' do
 
     it 'should have the content \'Hilfe\'' do
       expect(response.body).to include('Hilfe')
+    end
+
+    it 'should have a title' do
+      expect(response.body).to include("Rails Authentication | Help")
     end
 
   end
