@@ -16,6 +16,7 @@ gem 'haml-rails'
 gem 'html2haml'
 gem 'bootstrap-sass', '~> 3.3.3'
 
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -33,10 +34,10 @@ group :development, :test do
 end
 
 group :test do
+  gem 'shoulda-matchers', require: false
   gem 'selenium-webdriver', '~> 2.44.0'
   gem 'capybara', '2.4.4'
   gem 'factory_girl_rails', '4.5.0'
-  gem 'cucumber-rails', '1.4.2', :require => false
 end
 
 group :production do
