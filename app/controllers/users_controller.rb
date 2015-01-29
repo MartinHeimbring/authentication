@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :find_user,   only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, except: :index
-
+  before_action :signed_in_user,  only: [:index, :edit, :update, :destroy]
+  before_action :find_user,       only: [:show, :edit, :update, :destroy]
+  before_action :correct_user,    except: :index
+  before_action :admin_user,      only: :destroy
   def index
     @users = User.all
   end
@@ -64,5 +64,9 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
+
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 end
