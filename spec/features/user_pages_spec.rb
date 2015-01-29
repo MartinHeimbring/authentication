@@ -2,12 +2,50 @@ require 'rails_helper'
 
 describe 'User pages' do
 
-  describe 'Sign up page' do
+  context 'Sign up page' do
 
     it 'should have display \'Sign Up\'' do
-      visit users_new_path
+      visit new_user_path
       expect(page).to have_content('Sign Up')
     end
     
+  end
+
+  context 'profile page' do
+    let(:user) { FactoryGirl.create(:user) }
+    before(:each) { visit user_path(user) }
+    it 'should display username in body' do
+      expect(page).to have_content(user.name)
+    end
+    it 'should display username in title' do
+      expect(page).to have_title(user.name)
+    end
+
+  end
+
+  describe "signup" do
+
+    before { visit new_user_path }
+
+    let(:submit) { "Create my account" }
+
+    describe "with invalid information" do
+      it "should not create a user" do
+        expect { click_button submit }.not_to change(User, :count)
+      end
+    end
+
+    describe "with valid information" do
+      before do
+        fill_in "Name",         with: "Example User"
+        fill_in "Email",        with: "user@example.com"
+        fill_in "Password",     with: "foobar"
+        fill_in "Confirmation", with: "foobar"
+      end
+
+      it "should create a user" do
+        expect { click_button submit }.to change(User, :count).by(1)
+      end
+    end
   end
 end
