@@ -1,5 +1,6 @@
-- provide(:title, "Sign Up")
-%h1 Sign Up
+- provide(:title, "Settings")
+
+%h1 Update your profile!
 
 .row
   .col-md-6.col-md-offset-3
@@ -9,4 +10,4 @@
       = f.input :email
       = f.input :password
       = f.input :password_confirmation
-      = f.button :submit, "Create my account", class: 'btn btn-success'
+      = f.button :submit, "Save changes", class: 'btn btn-success'
